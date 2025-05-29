@@ -1,6 +1,6 @@
 from bpy.types import Operator, Context, Object, bpy_struct
 
-from ..properties import props_from_ctx
+from ..properties import props_from_ctx, TemplateMappingItem
 
 
 class TemplateImportOperator(Operator):
