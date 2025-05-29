@@ -1,0 +1,22 @@
+schema_version = "1.0.0"
+
+id = "jurajis_material_templates"
+name = "Juraji's Material Templates"
+version = "1.0.0"
+tagline = "Import materials, modifiers and other settings by geometry!"
+type = "add-on"
+
+maintainer = "Juraji <github@juraji.nl>"
+website = "https://github.com/Juraji/daz-materials-to-blender"
+tags = ["Import-Export", "Material", "UI", "Utility"]
+
+license = ["SPDX:GPL-3.0-or-later"]
+
+blender_version_min = "4.2.0"
+
+[build]
+paths_exclude_pattern = [
+    "/.git/",
+    "__pycache__/",
+    ".*",
+]

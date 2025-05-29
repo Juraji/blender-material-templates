@@ -1,0 +1,11 @@
+[DESIGN]
+min-public-methods=0
+max-line-length=120
+
+[MESSAGES CONTROL]
+disable=
+    missing-module-docstring,
+    missing-class-docstring,
+    missing-function-docstring,
+    relative-beyond-top-level,
+    unused-argument
