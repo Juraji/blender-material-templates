@@ -4,7 +4,7 @@ import bpy
 from bpy.path import abspath
 from bpy.types import Operator, Context
 
-from ..properties import props_from_ctx
+from ..properties import props_from_ctx, TemplateMappingItem
 from ..utils.str import strip_suffix
 
 
@@ -28,12 +28,12 @@ class AutoMatchOperator(Operator):
             return {"CANCELLED"}
 
         self.report({'INFO'}, f"Loading mappings from {path.basename(filepath)}...")
-        props.mapping_items.clear()
+        props.cleanup()
 
         try:
             c_name = props.source_collection_name
             if not c_name in bpy.data.collections:
-                with bpy.data.libraries.load(filepath, link=True) as (data_from, data_to):
+                with bpy.data.libraries.load(filepath, link=False) as (data_from, data_to):
                     if c_name in data_from.collections:
                         data_to.collections.append(c_name)
                     else:
@@ -69,7 +69,7 @@ class AutoMatchOperator(Operator):
                             None
                         )
 
-                item = props.mapping_items.add()
+                item: TemplateMappingItem = props.mapping_items.add()
                 item.source_object_name = src_obj_name
                 item.source_object = src_obj
                 item.target_object = target_obj

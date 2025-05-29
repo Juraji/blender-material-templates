@@ -1,6 +1,6 @@
 from bpy.types import Panel
 
-from ..operators import InvokeTemplateImportOperator
+from ..operators import TemplateImportOperator
 
 
 class TemplateImportPanel(Panel):
@@ -13,4 +13,4 @@ class TemplateImportPanel(Panel):
 
     def draw(self, context):
         layout = self.layout
-        layout.operator(InvokeTemplateImportOperator.bl_idname)
+        layout.operator(TemplateImportOperator.bl_idname)

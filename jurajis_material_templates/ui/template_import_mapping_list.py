@@ -5,7 +5,7 @@ from bpy.types import UIList, Context, UILayout
 
 
 class TemplateImportMappingList(UIList):
-    bl_idname = "TemplateImportMappingList"
+    bl_idname = "OBJECT_UL_mapping_list"
 
     def draw_item(self,
                   context: Context,

@@ -1,3 +1,4 @@
+import bpy
 from bpy.props import StringProperty, CollectionProperty, IntProperty
 from bpy.types import PropertyGroup
 
@@ -23,3 +24,11 @@ class TemplateImportProperties(PropertyGroup):
 
     def is_template_file_set(self):
         return self.template_file is not None and self.template_file.endswith(".blend")
+
+    def cleanup(self):
+        template_name = self.source_collection_name
+        linked_coll = bpy.data.collections.get(template_name)
+        if linked_coll:
+            bpy.data.collections.remove(linked_coll, do_unlink=True)
+
+        self.mapping_items.clear()
