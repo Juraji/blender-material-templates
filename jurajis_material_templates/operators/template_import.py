@@ -1,5 +1,7 @@
 from bpy.types import Operator, Context, Object, bpy_struct
 
+from . import AutoMatchOperator
+from .clear_matches import ClearMatchesOperator
 from ..properties import props_from_ctx, TemplateMappingItem
 
 
@@ -20,7 +22,10 @@ class TemplateImportOperator(Operator):
 
         layout.prop(props, "template_file")
         layout.separator()
-        layout.operator("template_import.auto_match")
+
+        row = layout.row(align=True)
+        row.operator(AutoMatchOperator.bl_idname)
+        row.operator(ClearMatchesOperator.bl_idname)
 
         layout.template_list(
             "OBJECT_UL_mapping_list", "",
